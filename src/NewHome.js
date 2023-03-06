@@ -12,7 +12,7 @@ function NewHome() {
     const navigate = useNavigate();
   
     const addDrink = () => {
-      Axios.post("http://localhost:3001/adddrink", {name: name, price: price, description: description}).then(() => {
+      Axios.post("https://mongo-redo-1.herokuapp.com/adddrink", {name: name, price: price, description: description}).then(() => {
         setDrinks([...drinks, { name: name, price: price, description: description}]);
         
       }
@@ -21,13 +21,13 @@ function NewHome() {
     };
 
     const deleteDrink = (id) => {
-      Axios.delete(`http://localhost:3001/delete/${id}`)
+      Axios.delete(`https://mongo-redo-1.herokuapp.com/${id}`)
         window.location.reload();
       
     };
 
     useEffect(() => {
-      Axios.get("http://localhost:3001/read").then((res) =>
+      Axios.get("https://mongo-redo-1.herokuapp.com/read").then((res) =>
       setDrinks(res.data))
     }, [])
     
